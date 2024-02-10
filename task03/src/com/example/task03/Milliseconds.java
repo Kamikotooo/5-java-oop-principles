@@ -8,21 +8,30 @@ public class Milliseconds implements TimeUnit {
     private final long amount;
 
     public Milliseconds(long amount) {
+
         this.amount = amount;
     }
 
     @Override
     public long toMillis() {
+
         return amount;
     }
 
     @Override
     public long toSeconds() {
-        return amount / 1000;
+
+        return Math.round((double)amount / 1000);
     }
 
     @Override
     public long toMinutes() {
-        return amount / 1000 * 60;
+
+        return Math.round((double)amount / (1000 * 60) );
+    }
+    @Override
+    public long toHours(){
+        Seconds s = new Seconds(toSeconds());
+        return s.toHours();
     }
 }
